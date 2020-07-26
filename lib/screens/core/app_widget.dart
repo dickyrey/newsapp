@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp/screens/sign_in/sign_in_page.dart';
+
+import '../bottom_nav_bar/bottom_nav_bar_page.dart';
 
 class AppWidget extends StatelessWidget {
   @override
@@ -9,7 +10,7 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SignInPage(),
+      home: BottomNavBarPage(),
     );
   }
 }
