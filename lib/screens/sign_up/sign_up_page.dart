@@ -1,24 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp/providers/sign_in_prov.dart';
-import 'package:newsapp/screens/sign_up/sign_up_page.dart';
-import 'package:newsapp/utils/constants.dart';
 import 'package:provider/provider.dart';
 
-class SignInPage extends StatelessWidget {
+import '../../providers/sign_up_prov.dart';
+import '../../utils/constants.dart';
+
+class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final signInProv = Provider.of<SignInProvider>(context);
+    final signUpProv = Provider.of<SignUpProvider>(context);
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: kBackgroundColor,
+        elevation: 0.0,
+        leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+            onPressed: () => Navigator.pop(context)),
+      ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 35.0),
         child: SingleChildScrollView(
           child: Form(
-            key: signInProv.formKey,
-            autovalidate: signInProv.autoValidation,
+            key: signUpProv.formKey,
+            autovalidate: signUpProv.autoValidation,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                SizedBox(height: 100.0),
                 Text(
                   'Welcome Back',
                   style: headline1,
@@ -28,10 +37,10 @@ class SignInPage extends StatelessWidget {
                   style: subtitle1,
                 ),
                 SizedBox(height: 50.0),
-                Text('Username or email', style: subtitle2),
+                Text('Full name', style: subtitle2),
                 TextFormField(
                   autocorrect: false,
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
@@ -39,9 +48,9 @@ class SignInPage extends StatelessWidget {
                         width: 1.0,
                       ),
                     ),
-                    hintText: 'Enter your username or email',
+                    hintText: 'Enter your full name',
                     hintStyle: subtitle1,
-                    suffixIcon: signInProv.emailComplete
+                    suffixIcon: signUpProv.fullNameComplete
                         ? Padding(
                             padding: const EdgeInsets.all(15.0),
                             child: CircleAvatar(
@@ -56,8 +65,40 @@ class SignInPage extends StatelessWidget {
                           )
                         : null,
                   ),
-                  onChanged: (val) => signInProv.onSavedEmail(val),
-                  validator: signInProv.validateEmail,
+                  onChanged: (val) => signUpProv.onSavedFullName(val),
+                  validator: signUpProv.validateFullName,
+                ),
+                SizedBox(height: 20.0),
+                Text('Username or email', style: subtitle2),
+                TextFormField(
+                  autocorrect: false,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: kBlueDeepColor,
+                        width: 1.0,
+                      ),
+                    ),
+                    hintText: 'Enter your username or email',
+                    hintStyle: subtitle1,
+                    suffixIcon: signUpProv.emailComplete
+                        ? Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: CircleAvatar(
+                              radius: 2.0,
+                              backgroundColor: Colors.blue,
+                              child: Icon(
+                                Icons.done,
+                                color: Colors.white,
+                                size: 12.0,
+                              ),
+                            ),
+                          )
+                        : null,
+                  ),
+                  onChanged: (val) => signUpProv.onSavedEmail(val),
+                  validator: signUpProv.validateEmail,
                 ),
                 SizedBox(height: 20.0),
                 Text('Password', style: subtitle2),
@@ -74,7 +115,7 @@ class SignInPage extends StatelessWidget {
                     ),
                     hintText: 'Enter your password',
                     hintStyle: subtitle1,
-                    suffixIcon: signInProv.passwordComplete
+                    suffixIcon: signUpProv.passwordComplete
                         ? Padding(
                             padding: const EdgeInsets.all(15.0),
                             child: CircleAvatar(
@@ -89,16 +130,21 @@ class SignInPage extends StatelessWidget {
                           )
                         : null,
                   ),
-                  onChanged: (val) => signInProv.onSavedPassword(val),
-                  validator: signInProv.validatePassword,
+                  onChanged: (val) => signUpProv.onSavedPassword(val),
+                  validator: signUpProv.validatePassword,
                 ),
                 SizedBox(height: 20.0),
+                Text(
+                  'By creating an account you aggree to our',
+                  style: subtitle2,
+                ),
+                SizedBox(height: 5.0),
                 GestureDetector(
                   onTap: () {
-                    /// [Navigate] to reset password
+                    // TODO: Navigate term and conditions page
                   },
                   child: Text(
-                    'Forgot Password?',
+                    'Term and Conditions',
                     style: subtitle2.copyWith(
                       color: kBlueDeepColor,
                       fontWeight: FontWeight.bold,
@@ -111,13 +157,13 @@ class SignInPage extends StatelessWidget {
                   height: 50.0,
                   child: RaisedButton(
                     onPressed: () {
-                      if (signInProv.formKey.currentState.validate()) {
-                        signInProv.formKey.currentState.save();
-                        signInProv.autoValidation = false;
+                      if (signUpProv.formKey.currentState.validate()) {
+                        signUpProv.formKey.currentState.save();
+                        signUpProv.autoValidation = false;
 
                         ///[Authentication] user if successfully return Home Page
                       } else {
-                        signInProv.autoValidation = true;
+                        signUpProv.autoValidation = true;
                       }
                     },
                     color: kBlueDeepColor,
@@ -158,7 +204,7 @@ class SignInPage extends StatelessWidget {
                         ),
                         Center(
                           child: Text(
-                            'Sign in with Google',
+                            'Continue with Google',
                             style: subtitle1.copyWith(color: Colors.white),
                           ),
                         ),
@@ -172,17 +218,12 @@ class SignInPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text("Don't have an account?", style: subtitle2),
+                      Text("Already have an account?", style: subtitle2),
                       SizedBox(width: 8.0),
                       GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignUpPage()));
-                        },
+                        onTap: () => Navigator.pop(context),
                         child: Text(
-                          "Sign Up",
+                          "Sign In",
                           style: subtitle2.copyWith(
                             color: kBlueDeepColor,
                             decoration: TextDecoration.underline,
