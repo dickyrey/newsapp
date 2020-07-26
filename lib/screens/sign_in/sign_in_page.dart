@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:newsapp/providers/sign_prov.dart';
 import 'package:newsapp/utils/constants.dart';
+import 'package:provider/provider.dart';
 
 class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final signInProv = Provider.of<SignInProvider>(context);
     return Scaffold(
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 35.0),
         child: SingleChildScrollView(
           child: Form(
+            key: signInProv.formKey,
+            autovalidate: signInProv.autoValidation,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
@@ -36,8 +41,8 @@ class SignInPage extends StatelessWidget {
                     hintText: 'Enter your username or email',
                     hintStyle: subtitle1,
                   ),
-                  onChanged: (val) {},
-                  validator: (value) {},
+                  onChanged: (val) => signInProv.onSavedEmail(val),
+                  validator: signInProv.validateEmail,
                 ),
                 SizedBox(height: 20.0),
                 Text('Password', style: subtitle2),
@@ -55,8 +60,8 @@ class SignInPage extends StatelessWidget {
                     hintText: 'Enter your password',
                     hintStyle: subtitle1,
                   ),
-                  onChanged: (val) {},
-                  validator: (value) {},
+                  onChanged: (val) => signInProv.onSavedPassword(val),
+                  validator: signInProv.validatePassword,
                 ),
                 SizedBox(height: 20.0),
                 GestureDetector(
@@ -76,7 +81,16 @@ class SignInPage extends StatelessWidget {
                   width: double.infinity,
                   height: 50.0,
                   child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (signInProv.formKey.currentState.validate()) {
+                        signInProv.formKey.currentState.save();
+                        signInProv.autoValidation = false;
+
+                        ///[Authentication] user if successfully return Home Page
+                      } else {
+                        signInProv.autoValidation = true;
+                      }
+                    },
                     color: kBlueDeepColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0),
