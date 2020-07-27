@@ -1,10 +1,9 @@
-import 'package:flushbar/flushbar.dart';
-import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:newsapp/screens/home/home_page.dart';
-import 'package:newsapp/utils/constants.dart';
+
+import '../../utils/constants.dart';
+import '../home/home_page.dart';
 
 class BottomNavBarPage extends StatefulWidget {
   @override
@@ -13,10 +12,8 @@ class BottomNavBarPage extends StatefulWidget {
 
 class _BottomNavBarPageState extends State<BottomNavBarPage>
     with TickerProviderStateMixin {
-  final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
   TabController _tabController;
   AnimationController _animationController;
-  Animation<Offset> _animation;
   DateTime currentBackPressTime;
   int _currentTab = 0;
 
@@ -36,9 +33,6 @@ class _BottomNavBarPageState extends State<BottomNavBarPage>
       vsync: this,
       duration: const Duration(milliseconds: 200),
     );
-    _animation = Tween<Offset>(begin: Offset(0.0, 0.0), end: Offset(0.0, -1.0))
-        .animate(CurvedAnimation(
-            curve: Curves.easeOut, parent: _animationController));
     _animationController.reverse();
   }
 

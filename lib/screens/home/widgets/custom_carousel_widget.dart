@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:provider/provider.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 import '../../../models/news_model.dart';
-import '../../../providers/news_provider.dart';
 import '../../../utils/constants.dart';
 
 class CustomCarouselWidget extends StatelessWidget {
+  final Future<List<NewsModel>> future;
+  const CustomCarouselWidget({
+    Key key,
+    @required this.future,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final newsProv = Provider.of<NewsProvider>(context);
     return FutureBuilder<List<NewsModel>>(
-        future: newsProv.fetchNews(),
+        future: future,
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -94,11 +98,13 @@ class CustomCarouselWidget extends StatelessWidget {
                   children: <Widget>[
                     Spacer(),
                     Text(
-                      'Imint: the Swedish firm that gives Chinese smartphones an edge in video production',
+                      news.title,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                       style: headline2.copyWith(color: Colors.white),
                     ),
                     Text(
-                      '1 hour ago',
+                      timeago.format(news.publishedAt),
                       style: subtitle2.copyWith(color: Colors.white),
                     ),
                   ],

@@ -16,6 +16,7 @@ dependencies:
   flutter_icons: ^1.1.0
   flushbar: ^1.10.4
   flutter_swiper: ^1.1.6
+  timeago: ^2.0.26
 
 dev_dependencies:
   flutter_test:

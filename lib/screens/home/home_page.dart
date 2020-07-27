@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:newsapp/models/news_model.dart';
-import 'package:newsapp/providers/news_provider.dart';
-import 'package:newsapp/screens/home/widgets/custom_carousel_widget.dart';
-import 'package:newsapp/test_widget.dart';
-import 'package:newsapp/utils/constants.dart';
 import 'package:provider/provider.dart';
+
+import '../../providers/news_provider.dart';
+import '../../utils/constants.dart';
+import 'widgets/custom_carousel_widget.dart';
+import 'widgets/top_news_list_widget.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -29,16 +28,26 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              CustomCarouselWidget(),
+              CustomCarouselWidget(future: newsProv.fetchCarouselNews()),
+              subHead('Top News'),
+              TopNewsListWidget(future: newsProv.fetchTopNews()),
+              SizedBox(height: 40.0),
             ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => TestWidget()));
-        },
+    );
+  }
+
+  ListTile subHead(String title) {
+    return ListTile(
+      title: Text(
+        title,
+        style: headline2,
+      ),
+      trailing: Text(
+        'See all',
+        style: subtitle2,
       ),
     );
   }
