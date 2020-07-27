@@ -15,6 +15,11 @@ var headline2 = GoogleFonts.playfairDisplay(
   fontWeight: FontWeight.w600,
   color: Colors.black54,
 );
+var headline3 = GoogleFonts.playfairDisplay(
+  fontSize: 15.0,
+  fontWeight: FontWeight.w600,
+  color: Colors.black,
+);
 
 var subtitle1 = GoogleFonts.playfairDisplay(
   fontSize: 15.0,

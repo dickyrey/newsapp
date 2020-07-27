@@ -66,7 +66,8 @@ class TopNewsListWidget extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
               child: Image.network(
-                news.urlToImage,
+                news.urlToImage ??
+                    'https://bitsofco.de/content/images/2018/12/broken-1.png',
                 fit: BoxFit.fitHeight,
               ),
             ),
@@ -90,8 +91,8 @@ class TopNewsListWidget extends StatelessWidget {
                   children: <Widget>[
                     CircleAvatar(
                       radius: 17.0,
-                      backgroundImage: NetworkImage(
-                          'https://i.pinimg.com/564x/aa/0b/51/aa0b512753d5a1c9c3c2869b77e0c67b.jpg'),
+                      backgroundColor: Colors.black12,
+                      backgroundImage: AssetImage('assets/images/bbc_news.jpg'),
                     ),
                     SizedBox(width: 8.0),
                     Column(

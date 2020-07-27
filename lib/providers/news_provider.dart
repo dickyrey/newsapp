@@ -15,11 +15,18 @@ class NewsProvider with ChangeNotifier {
   String topNews =
       "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=1ae2d88a2b2d41afabffb03c92ea1c55";
 
+  String englishLanguageNews =
+      "https://newsapi.org/v2/top-headlines?language=en&apiKey=1ae2d88a2b2d41afabffb03c92ea1c55";
+
   Future<List<NewsModel>> fetchCarouselNews() async {
     return fetchNews(carouselNews);
   }
 
   Future<List<NewsModel>> fetchTopNews() async {
     return fetchNews(topNews);
+  }
+
+  Future<List<NewsModel>> fetchEnglishLanguage() async {
+    return fetchNews(englishLanguageNews);
   }
 }

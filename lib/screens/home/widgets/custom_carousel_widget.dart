@@ -74,7 +74,8 @@ class CustomCarouselWidget extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: NetworkImage(
-                  news.urlToImage,
+                  news.urlToImage ??
+                      'https://bitsofco.de/content/images/2018/12/broken-1.png',
                 ),
                 fit: BoxFit.cover,
               ),
@@ -84,6 +85,7 @@ class CustomCarouselWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
+                    Colors.transparent,
                     Colors.black26,
                     Colors.black54,
                   ],
@@ -101,7 +103,10 @@ class CustomCarouselWidget extends StatelessWidget {
                       news.title,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
-                      style: headline2.copyWith(color: Colors.white),
+                      style: headline2.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     Text(
                       timeago.format(news.publishedAt),
