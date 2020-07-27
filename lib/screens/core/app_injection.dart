@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newsapp/providers/news_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/sign_in_prov.dart';
@@ -14,6 +15,7 @@ class AppInjection extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => SignInProvider()),
         ChangeNotifierProvider(create: (context) => SignUpProvider()),
+        ChangeNotifierProvider(create: (context) => NewsProvider()),
       ],
     );
   }
