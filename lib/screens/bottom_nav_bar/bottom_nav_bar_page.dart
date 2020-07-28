@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:newsapp/screens/collection/collection_page.dart';
+import 'package:newsapp/screens/news_language/news_language_page.dart';
 
 import '../../utils/constants.dart';
-import '../category/category_page.dart';
 import '../home/home_page.dart';
 
 class BottomNavBarPage extends StatefulWidget {
@@ -20,9 +21,8 @@ class _BottomNavBarPageState extends State<BottomNavBarPage>
 
   var currentTab = [
     HomePage(),
-    CategoryPage(),
-    HomePage(),
-    HomePage(),
+    CollectionPage(),
+    NewsLanguagePage(),
     HomePage(),
   ];
 
@@ -83,10 +83,6 @@ class _BottomNavBarPageState extends State<BottomNavBarPage>
             ),
             BottomNavigationBarItem(
               icon: Icon(FlutterIcons.grid_fea),
-              title: Text(''),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(FlutterIcons.message1_ant),
               title: Text(''),
             ),
             BottomNavigationBarItem(

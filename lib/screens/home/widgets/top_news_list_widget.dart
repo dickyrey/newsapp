@@ -121,10 +121,6 @@ class TopNewsListWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Icon(
-                Icons.bookmark_border,
-                color: kBlueDeepColor,
-              )
             ],
           )
         ],

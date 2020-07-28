@@ -7,7 +7,7 @@ import '../../utils/constants.dart';
 import 'category_card.dart';
 import 'widgets/tab_collection_widget.dart';
 
-class CategoryPage extends StatelessWidget {
+class CollectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final newsProv = Provider.of<NewsProvider>(context);
