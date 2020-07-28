@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
 import '../../utils/constants.dart';
+import '../category/category_page.dart';
 import '../home/home_page.dart';
 
 class BottomNavBarPage extends StatefulWidget {
@@ -19,7 +20,7 @@ class _BottomNavBarPageState extends State<BottomNavBarPage>
 
   var currentTab = [
     HomePage(),
-    HomePage(),
+    CategoryPage(),
     HomePage(),
     HomePage(),
     HomePage(),
@@ -77,11 +78,11 @@ class _BottomNavBarPageState extends State<BottomNavBarPage>
           unselectedItemColor: Colors.black45,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(FlutterIcons.home_ant),
+              icon: Icon(FlutterIcons.home_fea),
               title: Text(''),
             ),
             BottomNavigationBarItem(
-              icon: Icon(FlutterIcons.box_fea),
+              icon: Icon(FlutterIcons.grid_fea),
               title: Text(''),
             ),
             BottomNavigationBarItem(
@@ -93,7 +94,7 @@ class _BottomNavBarPageState extends State<BottomNavBarPage>
               title: Text(''),
             ),
             BottomNavigationBarItem(
-              icon: Icon(FlutterIcons.grid_fea),
+              icon: Icon(FlutterIcons.user_fea),
               title: Text(''),
             ),
           ],

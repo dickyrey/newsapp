@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart' as http_dio;
 import 'package:flutter/foundation.dart';
 import 'package:newsapp/repository/news_repository.dart';
+import 'package:newsapp/utils/url.dart';
 
 import '../models/news_model.dart';
 
@@ -9,14 +10,6 @@ class NewsProvider with ChangeNotifier {
   NewsModel _newsModel;
 
   NewsModel get newsModel => _newsModel;
-
-  String carouselNews =
-      'https://newsapi.org/v2/top-headlines?country=us&apiKey=1ae2d88a2b2d41afabffb03c92ea1c55';
-  String topNews =
-      "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=1ae2d88a2b2d41afabffb03c92ea1c55";
-
-  String englishLanguageNews =
-      "https://newsapi.org/v2/top-headlines?language=en&apiKey=1ae2d88a2b2d41afabffb03c92ea1c55";
 
   Future<List<NewsModel>> fetchCarouselNews() async {
     return fetchNews(carouselNews);
@@ -28,5 +21,53 @@ class NewsProvider with ChangeNotifier {
 
   Future<List<NewsModel>> fetchEnglishLanguage() async {
     return fetchNews(englishLanguageNews);
+  }
+
+  Future<List<NewsModel>> fetchBitcoinCollection() async {
+    return fetchNews(bitcoinCollection);
+  }
+
+  Future<List<NewsModel>> fetchBusinessCollection() async {
+    return fetchNews(businessCollection);
+  }
+
+  Future<List<NewsModel>> fetchTechCollection() async {
+    return fetchNews(techCollection);
+  }
+
+  Future<List<NewsModel>> fetchHealthCollection() async {
+    return fetchNews(healthCollection);
+  }
+
+  Future<List<NewsModel>> fetchMusicCollection() async {
+    return fetchNews(musicCollection);
+  }
+
+  Future<List<NewsModel>> fetchEconomyCollection() async {
+    return fetchNews(economyCollection);
+  }
+
+  Future<List<NewsModel>> fetchFoodCollection() async {
+    return fetchNews(foodCollection);
+  }
+
+  Future<List<NewsModel>> fetchSportCollection() async {
+    return fetchNews(sportCollection);
+  }
+
+  Future<List<NewsModel>> fetchTravelCollection() async {
+    return fetchNews(travelCollection);
+  }
+
+  Future<List<NewsModel>> fetchPoliticCollection() async {
+    return fetchNews(politicCollection);
+  }
+
+  Future<List<NewsModel>> fetchAstronomyCollection() async {
+    return fetchNews(astronomyCollection);
+  }
+
+  Future<List<NewsModel>> fetchMovieCollection() async {
+    return fetchNews(movieCollection);
   }
 }
