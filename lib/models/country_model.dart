@@ -1,0 +1,305 @@
+class Country {
+  final int id;
+  final String name;
+  final String image;
+  final String countryCode;
+
+  Country({this.id, this.name, this.image, this.countryCode});
+}
+
+List<Country> countryList = [
+  Country(
+    id: 1,
+    name: "Afghanistan",
+    image: "assets/flag/afghanistan-flag-round-medium.png",
+    countryCode: "af",
+  ),
+  Country(
+    id: 2,
+    name: "Australia",
+    image: "assets/flag/australia-flag-round-medium.png",
+    countryCode: "au",
+  ),
+  Country(
+    id: 3,
+    name: "Austria",
+    image: "assets/flag/austria-flag-round-medium.png",
+    countryCode: "at",
+  ),
+  Country(
+    id: 4,
+    name: "Belgium",
+    image: "assets/flag/belgium-flag-round-medium.png",
+    countryCode: "be",
+  ),
+  Country(
+    id: 5,
+    name: "Brazil",
+    image: "assets/flag/brazil-flag-round-medium.png",
+    countryCode: "br",
+  ),
+  Country(
+    id: 6,
+    name: "Bulgaria",
+    image: "assets/flag/bulgaria-flag-round-medium.png",
+    countryCode: "bg",
+  ),
+  Country(
+    id: 7,
+    name: "Canada",
+    image: "assets/flag/canada-flag-round-medium.png",
+    countryCode: "ca",
+  ),
+  Country(
+    id: 8,
+    name: "People's Republic of China",
+    image: "assets/flag/china-flag-round-medium.png",
+    countryCode: "cn",
+  ),
+  Country(
+    id: 9,
+    name: "Colombia",
+    image: "assets/flag/colombia-flag-round-medium.png",
+    countryCode: "co",
+  ),
+  Country(
+    id: 10,
+    name: "Cuba",
+    image: "assets/flag/cuba-flag-round-medium.png",
+    countryCode: "cu",
+  ),
+  Country(
+    id: 11,
+    name: "Czechia",
+    image: "assets/flag/czech-republic-flag-round-medium.png",
+    countryCode: "cz",
+  ),
+  Country(
+    id: 12,
+    name: "Egypt",
+    image: "assets/flag/egypt-flag-round-medium.png",
+    countryCode: "eg",
+  ),
+  Country(
+    id: 13,
+    name: "France",
+    image: "assets/flag/france-flag-round-medium.png",
+    countryCode: "fr",
+  ),
+  Country(
+    id: 14,
+    name: "Germany",
+    image: "assets/flag/germany-flag-round-medium.png",
+    countryCode: "de",
+  ),
+  Country(
+    id: 15,
+    name: "Greece",
+    image: "assets/flag/greece-flag-round-medium.png",
+    countryCode: "gr",
+  ),
+  Country(
+    id: 16,
+    name: "Hungary",
+    image: "assets/flag/hungary-flag-round-medium.png",
+    countryCode: "hu",
+  ),
+  Country(
+    id: 17,
+    name: "India",
+    image: "assets/flag/india-flag-round-medium.png",
+    countryCode: "in",
+  ),
+  Country(
+    id: 18,
+    name: "Indonesia",
+    image: "assets/flag/indonesia-flag-round-medium.png",
+    countryCode: "id",
+  ),
+  Country(
+    id: 19,
+    name: "Ireland",
+    image: "assets/flag/ireland-flag-round-medium.png",
+    countryCode: "ie",
+  ),
+  Country(
+    id: 20,
+    name: "Israel",
+    image: "assets/flag/israel-flag-round-medium.png",
+    countryCode: "il",
+  ),
+  Country(
+    id: 21,
+    name: "Italy",
+    image: "assets/flag/italy-flag-round-medium.png",
+    countryCode: "it",
+  ),
+  Country(
+    id: 22,
+    name: "Japan",
+    image: "assets/flag/japan-flag-round-medium.png",
+    countryCode: "jp",
+  ),
+  Country(
+    id: 23,
+    name: "Latvia",
+    image: "assets/flag/latvia-flag-round-medium.png",
+    countryCode: "lv",
+  ),
+  Country(
+    id: 24,
+    name: "Lithuania",
+    image: "assets/flag/lithuania-flag-round-medium.png",
+    countryCode: "lt",
+  ),
+  Country(
+    id: 25,
+    name: "Malaysia",
+    image: "assets/flag/malaysia-flag-round-medium.png",
+    countryCode: "my",
+  ),
+  Country(
+    id: 26,
+    name: "Mexico",
+    image: "assets/flag/mexico-flag-round-medium.png",
+    countryCode: "mx",
+  ),
+  Country(
+    id: 27,
+    name: "Netherlands",
+    image: "assets/flag/netherlands-flag-round-medium.png",
+    countryCode: "nl",
+  ),
+  Country(
+    id: 28,
+    name: "New Zealand",
+    image: "assets/flag/new-zealand-flag-round-medium.png",
+    countryCode: "nz",
+  ),
+  Country(
+    id: 29,
+    name: "Nigeria",
+    image: "assets/flag/nigeria-flag-round-medium.png",
+    countryCode: "ng",
+  ),
+  Country(
+    id: 30,
+    name: "Norway",
+    image: "assets/flag/norway-flag-round-medium.png",
+    countryCode: "no",
+  ),
+  Country(
+    id: 31,
+    name: "Philippines",
+    image: "assets/flag/philippines-flag-round-medium.png",
+    countryCode: "ph",
+  ),
+  Country(
+    id: 32,
+    name: "Poland",
+    image: "assets/flag/poland-flag-round-medium.png",
+    countryCode: "pl",
+  ),
+  Country(
+    id: 33,
+    name: "Portugal",
+    image: "assets/flag/portugal-flag-round-medium.png",
+    countryCode: "pt",
+  ),
+  Country(
+    id: 34,
+    name: "Romania",
+    image: "assets/flag/romania-flag-round-medium.png",
+    countryCode: "ro",
+  ),
+  Country(
+    id: 35,
+    name: "Russia",
+    image: "assets/flag/russia-flag-round-medium.png",
+    countryCode: "ru",
+  ),
+  Country(
+    id: 36,
+    name: "Saudi Arabia",
+    image: "assets/flag/saudi-arabia-flag-round-medium.png",
+    countryCode: "sa",
+  ),
+  Country(
+    id: 37,
+    name: "Slovenia",
+    image: "assets/flag/slovenia-flag-round-medium.png",
+    countryCode: "si",
+  ),
+  Country(
+    id: 38,
+    name: "South Africa",
+    image: "assets/flag/south-africa-flag-round-medium.png",
+    countryCode: "za",
+  ),
+  Country(
+    id: 39,
+    name: "South Korea",
+    image: "assets/flag/south-korea-flag-round-medium.png",
+    countryCode: "kr",
+  ),
+  Country(
+    id: 40,
+    name: "Sweden",
+    image: "assets/flag/sweden-flag-round-medium.png",
+    countryCode: "se",
+  ),
+  Country(
+    id: 41,
+    name: "Switzerland",
+    image: "assets/flag/switzerland-flag-round-medium.png",
+    countryCode: "ch",
+  ),
+  Country(
+    id: 42,
+    name: "Taiwan",
+    image: "assets/flag/taiwan-flag-round-medium.png",
+    countryCode: "tw",
+  ),
+  Country(
+    id: 43,
+    name: "Thailand",
+    image: "assets/flag/thailand-flag-round-medium.png",
+    countryCode: "th",
+  ),
+  Country(
+    id: 44,
+    name: "Turkey",
+    image: "assets/flag/turkey-flag-round-medium.png",
+    countryCode: "tr",
+  ),
+  Country(
+    id: 45,
+    name: "Ukraine",
+    image: "assets/flag/ukraine-flag-round-medium.png",
+    countryCode: "ua",
+  ),
+  Country(
+    id: 46,
+    name: "United Arab Emirates",
+    image: "assets/flag/united-arab-emirates-flag-round-medium.png",
+    countryCode: "ae",
+  ),
+  Country(
+    id: 47,
+    name: "United Kingdom",
+    image: "assets/flag/united-kingdom-flag-round-medium.png",
+    countryCode: "gb",
+  ),
+  Country(
+    id: 48,
+    name: "United States of America",
+    image: "assets/flag/united-states-of-america-flag-round-medium.png",
+    countryCode: "us",
+  ),
+  Country(
+    id: 49,
+    name: "Venezuela",
+    image: "assets/flag/venezuela-flag-round-medium.png",
+    countryCode: "ve",
+  ),
+];
