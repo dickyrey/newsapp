@@ -7,7 +7,7 @@ import '../repository/news_repository.dart';
 class NewsProvider with ChangeNotifier {
   http_dio.Dio dio = http_dio.Dio();
   NewsModel _newsModel;
-  // String _urlEverything = "http://newsapi.org/v2/everything?q=";
+  String _urlEverything = "http://newsapi.org/v2/everything?";
   String _urlTopHeadline = "https://newsapi.org/v2/top-headlines?";
   String _apiKey = "89647919638e4ee9a4898ab826e3d7f2";
 
@@ -35,9 +35,6 @@ class NewsProvider with ChangeNotifier {
 
   Future<List<NewsModel>> fetchNewsbyCountryCollection(
       {String countryCode, String category}) async {
-    print(countryCode);
-
-    print(category);
     var urlNews = fetchNews(_urlTopHeadline +
         "country=" +
         countryCode +
@@ -46,5 +43,15 @@ class NewsProvider with ChangeNotifier {
         "&apiKey=" +
         _apiKey);
     return urlNews;
+  }
+
+  Future<List<NewsModel>> fetchNewsfromChannel({
+    @required String domain,
+  }) async {
+    return fetchNews(_urlEverything +
+        "domains=" +
+        domain +
+        "&language=en&apiKey=" +
+        _apiKey);
   }
 }

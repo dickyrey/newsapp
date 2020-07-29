@@ -12,7 +12,7 @@ class CollectionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final newsProv = Provider.of<NewsProvider>(context);
     return DefaultTabController(
-      length: 8,
+      length: 7,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: kBackgroundColor,
@@ -39,7 +39,6 @@ class CollectionPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12.0),
                 ),
                 tabs: [
-                  Tab(text: 'All Collection'),
                   Tab(text: 'Daily'),
                   Tab(text: 'Business'),
                   Tab(text: 'Entertainment'),
@@ -54,7 +53,6 @@ class CollectionPage extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            allCategories(),
             TabCollectionWidget(future: newsProv.fetchCollection('general')),
             TabCollectionWidget(future: newsProv.fetchCollection('business')),
             TabCollectionWidget(
@@ -86,7 +84,17 @@ class CollectionPage extends StatelessWidget {
       shrinkWrap: true,
       itemBuilder: (context, index) {
         var category = categoryList[index];
-        return CategoryCard(category: category);
+        return CategoryCard(
+          category: category,
+          onTap: () {
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (BuildContext context)=>,
+            //   ),
+            // );
+          },
+        );
       },
     );
   }

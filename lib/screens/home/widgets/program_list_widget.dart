@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../models/program_model.dart';
+import '../../../models/channel_model.dart';
 import '../../../utils/constants.dart';
 
 class ProgramListWidget extends StatelessWidget {
@@ -14,13 +14,13 @@ class ProgramListWidget extends StatelessWidget {
       width: double.infinity,
       height: 150.0,
       child: ListView.builder(
-        itemCount: programList.length,
+        itemCount: channelList.length,
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         padding: EdgeInsets.symmetric(horizontal: 18.0),
         physics: BouncingScrollPhysics(),
         itemBuilder: (context, index) {
-          var program = programList[index];
+          var channel = channelList[index];
           return Padding(
             padding: const EdgeInsets.only(right: 18.0),
             child: Column(
@@ -36,13 +36,13 @@ class ProgramListWidget extends StatelessWidget {
                     child: CircleAvatar(
                       radius: 30.0,
                       backgroundImage: AssetImage(
-                        program.logo,
+                        channel.logo,
                       ),
                     ),
                   ),
                 ),
                 Text(
-                  program.name,
+                  channel.name,
                   style: headline3,
                 )
               ],

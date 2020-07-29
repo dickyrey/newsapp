@@ -6,14 +6,16 @@ class CategoryCard extends StatelessWidget {
   const CategoryCard({
     Key key,
     @required this.category,
+    @required this.onTap,
   }) : super(key: key);
 
   final Category category;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5.0),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:newsapp/screens/collection/collection_page.dart';
-import 'package:newsapp/screens/news_language/news_by_country_page.dart';
 
 import '../../utils/constants.dart';
+import '../collection/collection_page.dart';
+import '../country/news_by_country_page.dart';
 import '../home/home_page.dart';
 
 class BottomNavBarPage extends StatefulWidget {

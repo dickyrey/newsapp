@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:newsapp/models/channel_model.dart';
+import 'package:newsapp/screens/channel/browse_channel_page.dart';
+import 'package:newsapp/screens/channel/channel_page.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/news_provider.dart';
@@ -32,10 +35,33 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               CustomCarouselWidget(future: newsProv.fetchCarouselNews()),
-              subHead('Top News from BBC News'),
+              subHead(
+                title: 'Top News from BBC News',
+                onTap: () {
+                  ChannelModel channel = channelList[0];
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => BrowseChannelPage(
+                        programModel: channel,
+                      ),
+                    ),
+                  );
+                },
+              ),
               TopNewsListWidget(future: newsProv.fetchTopNews()),
               SizedBox(height: 15.0),
-              subHead('Top Program'),
+              subHead(
+                title: 'Top Channel',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => ChannelPage(),
+                    ),
+                  );
+                },
+              ),
               ProgramListWidget(),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -63,15 +89,18 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  ListTile subHead(String title) {
+  ListTile subHead({String title, Function onTap}) {
     return ListTile(
       title: Text(
         title,
         style: headline2,
       ),
-      trailing: Text(
-        'See all',
-        style: subtitle2,
+      trailing: GestureDetector(
+        onTap: onTap,
+        child: Text(
+          'See all',
+          style: subtitle2,
+        ),
       ),
     );
   }

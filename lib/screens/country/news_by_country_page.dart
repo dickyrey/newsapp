@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp/models/country_model.dart';
-import 'package:newsapp/screens/news_language/browse_news_by_country_page.dart';
-import 'package:newsapp/utils/constants.dart';
+
+import '../../models/country_model.dart';
+import '../../utils/constants.dart';
+import 'browse_news_by_country_page.dart';
 
 class NewsByCountryPage extends StatelessWidget {
   @override

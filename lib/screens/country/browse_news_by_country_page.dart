@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp/models/category_model.dart';
-import 'package:newsapp/models/country_model.dart';
-import 'package:newsapp/models/news_model.dart';
-import 'package:newsapp/providers/news_provider.dart';
-import 'package:newsapp/screens/collection/widgets/news_collection_card.dart';
-import 'package:newsapp/utils/constants.dart';
 import 'package:provider/provider.dart';
+
+import '../../models/country_model.dart';
+import '../../models/news_model.dart';
+import '../../providers/news_provider.dart';
+import '../../utils/constants.dart';
+import '../collection/widgets/news_collection_card.dart';
 
 class BrowseNewsByCountryPage extends StatelessWidget {
   final Country country;
@@ -161,20 +161,10 @@ class CountryNewsDailyTab extends StatelessWidget {
             itemCount: snapshot.data.length,
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
-            padding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 12.0),
+            padding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 15.0),
             itemBuilder: (context, index) {
               var news = snapshot.data[index];
-              print(news.toString());
-              if (snapshot.data.length == 0) {
-                print("List " + snapshot.data.toString() + " is empty");
-                return Center(
-                    child: Text(
-                  'No Data',
-                  style: headline2,
-                ));
-              } else {
-                return NewsCollectionCard(news: news);
-              }
+              return NewsCollectionCard(news: news);
             },
           );
         });
