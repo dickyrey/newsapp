@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:newsapp/screens/collection/collection_page.dart';
-import 'package:newsapp/screens/news_language/news_language_page.dart';
+import 'package:newsapp/screens/news_language/news_by_country_page.dart';
 
 import '../../utils/constants.dart';
 import '../home/home_page.dart';
@@ -22,7 +22,7 @@ class _BottomNavBarPageState extends State<BottomNavBarPage>
   var currentTab = [
     HomePage(),
     CollectionPage(),
-    NewsLanguagePage(),
+    NewsByCountryPage(),
     HomePage(),
   ];
 

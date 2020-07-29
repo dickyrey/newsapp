@@ -1,5 +1,6 @@
-import 'package:newsapp/models/news_model.dart';
 import 'package:dio/dio.dart' as http_dio;
+
+import '../models/news_model.dart';
 
 Future<List<NewsModel>> fetchNews(String url) async {
   http_dio.Dio dio = http_dio.Dio();

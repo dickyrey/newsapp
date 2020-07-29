@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../models/category_model.dart';
 import '../../providers/news_provider.dart';
 import '../../utils/constants.dart';
-import 'category_card.dart';
+import 'widgets/category_card.dart';
 import 'widgets/tab_collection_widget.dart';
 
 class CollectionPage extends StatelessWidget {
@@ -12,7 +12,7 @@ class CollectionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final newsProv = Provider.of<NewsProvider>(context);
     return DefaultTabController(
-      length: 13,
+      length: 8,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: kBackgroundColor,
@@ -40,18 +40,13 @@ class CollectionPage extends StatelessWidget {
                 ),
                 tabs: [
                   Tab(text: 'All Collection'),
-                  Tab(text: 'Bitcoin'),
+                  Tab(text: 'Daily'),
                   Tab(text: 'Business'),
-                  Tab(text: 'Tech'),
+                  Tab(text: 'Entertainment'),
                   Tab(text: 'Health'),
-                  Tab(text: 'Music'),
-                  Tab(text: 'Economy'),
-                  Tab(text: 'Food'),
-                  Tab(text: 'Sport'),
-                  Tab(text: 'Travel'),
-                  Tab(text: 'Politic'),
-                  Tab(text: 'Astronomy'),
-                  Tab(text: 'Movie'),
+                  Tab(text: 'Science'),
+                  Tab(text: 'Sports'),
+                  Tab(text: 'Technology'),
                 ],
               ),
             ),
@@ -60,18 +55,14 @@ class CollectionPage extends StatelessWidget {
         body: TabBarView(
           children: [
             allCategories(),
-            TabCollectionWidget(future: newsProv.fetchBitcoinCollection()),
-            TabCollectionWidget(future: newsProv.fetchBusinessCollection()),
-            TabCollectionWidget(future: newsProv.fetchTechCollection()),
-            TabCollectionWidget(future: newsProv.fetchHealthCollection()),
-            TabCollectionWidget(future: newsProv.fetchMusicCollection()),
-            TabCollectionWidget(future: newsProv.fetchEconomyCollection()),
-            TabCollectionWidget(future: newsProv.fetchFoodCollection()),
-            TabCollectionWidget(future: newsProv.fetchSportCollection()),
-            TabCollectionWidget(future: newsProv.fetchTravelCollection()),
-            TabCollectionWidget(future: newsProv.fetchPoliticCollection()),
-            TabCollectionWidget(future: newsProv.fetchAstronomyCollection()),
-            TabCollectionWidget(future: newsProv.fetchMovieCollection()),
+            TabCollectionWidget(future: newsProv.fetchCollection('general')),
+            TabCollectionWidget(future: newsProv.fetchCollection('business')),
+            TabCollectionWidget(
+                future: newsProv.fetchCollection('entertainment')),
+            TabCollectionWidget(future: newsProv.fetchCollection('health')),
+            TabCollectionWidget(future: newsProv.fetchCollection('science')),
+            TabCollectionWidget(future: newsProv.fetchCollection('sports')),
+            TabCollectionWidget(future: newsProv.fetchCollection('technology')),
           ],
         ),
       ),

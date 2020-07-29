@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp/models/country_model.dart';
+import 'package:newsapp/screens/news_language/browse_news_by_country_page.dart';
 import 'package:newsapp/utils/constants.dart';
 
-class NewsLanguagePage extends StatelessWidget {
+class NewsByCountryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,13 +25,25 @@ class NewsLanguagePage extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 15.0),
         itemBuilder: (context, index) {
           var country = countryList[index];
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 15.0),
-            child: ListTile(
-              leading: Image.asset(country.image),
-              title: Text(
-                country.name,
-                style: headline3,
+          return GestureDetector(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 15.0),
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BrowseNewsByCountryPage(
+                        country: country,
+                      ),
+                    ),
+                  );
+                },
+                leading: Image.asset(country.image),
+                title: Text(
+                  country.name,
+                  style: headline3,
+                ),
               ),
             ),
           );

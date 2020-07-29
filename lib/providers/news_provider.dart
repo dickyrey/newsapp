@@ -1,73 +1,50 @@
 import 'package:dio/dio.dart' as http_dio;
 import 'package:flutter/foundation.dart';
-import 'package:newsapp/repository/news_repository.dart';
-import 'package:newsapp/utils/url.dart';
 
 import '../models/news_model.dart';
+import '../repository/news_repository.dart';
 
 class NewsProvider with ChangeNotifier {
   http_dio.Dio dio = http_dio.Dio();
   NewsModel _newsModel;
+  // String _urlEverything = "http://newsapi.org/v2/everything?q=";
+  String _urlTopHeadline = "https://newsapi.org/v2/top-headlines?";
+  String _apiKey = "89647919638e4ee9a4898ab826e3d7f2";
 
   NewsModel get newsModel => _newsModel;
 
   Future<List<NewsModel>> fetchCarouselNews() async {
-    return fetchNews(carouselNews);
+    return fetchNews(_urlTopHeadline + "country=us&apiKey=" + _apiKey);
   }
 
   Future<List<NewsModel>> fetchTopNews() async {
-    return fetchNews(topNews);
+    return fetchNews(_urlTopHeadline + "sources=bbc-news&apiKey=" + _apiKey);
   }
 
   Future<List<NewsModel>> fetchEnglishLanguage() async {
-    return fetchNews(englishLanguageNews);
+    return fetchNews(_urlTopHeadline + "language=en&apiKey=" + _apiKey);
   }
 
-  Future<List<NewsModel>> fetchBitcoinCollection() async {
-    return fetchNews(bitcoinCollection);
+  Future<List<NewsModel>> fetchCollection(String collection) async {
+    return fetchNews(_urlTopHeadline +
+        "country=us&category=" +
+        collection +
+        "&sortBy=publishedAt&apiKey=" +
+        _apiKey);
   }
 
-  Future<List<NewsModel>> fetchBusinessCollection() async {
-    return fetchNews(businessCollection);
-  }
+  Future<List<NewsModel>> fetchNewsbyCountryCollection(
+      {String countryCode, String category}) async {
+    print(countryCode);
 
-  Future<List<NewsModel>> fetchTechCollection() async {
-    return fetchNews(techCollection);
-  }
-
-  Future<List<NewsModel>> fetchHealthCollection() async {
-    return fetchNews(healthCollection);
-  }
-
-  Future<List<NewsModel>> fetchMusicCollection() async {
-    return fetchNews(musicCollection);
-  }
-
-  Future<List<NewsModel>> fetchEconomyCollection() async {
-    return fetchNews(economyCollection);
-  }
-
-  Future<List<NewsModel>> fetchFoodCollection() async {
-    return fetchNews(foodCollection);
-  }
-
-  Future<List<NewsModel>> fetchSportCollection() async {
-    return fetchNews(sportCollection);
-  }
-
-  Future<List<NewsModel>> fetchTravelCollection() async {
-    return fetchNews(travelCollection);
-  }
-
-  Future<List<NewsModel>> fetchPoliticCollection() async {
-    return fetchNews(politicCollection);
-  }
-
-  Future<List<NewsModel>> fetchAstronomyCollection() async {
-    return fetchNews(astronomyCollection);
-  }
-
-  Future<List<NewsModel>> fetchMovieCollection() async {
-    return fetchNews(movieCollection);
+    print(category);
+    var urlNews = fetchNews(_urlTopHeadline +
+        "country=" +
+        countryCode +
+        "&category=" +
+        category +
+        "&apiKey=" +
+        _apiKey);
+    return urlNews;
   }
 }
