@@ -23,7 +23,7 @@ List<ChannelModel> channelList = [
     logo: 'assets/images/cbs.png',
     bannerImage:
         'https://cbsnews3.cbsistatic.com/hub/i/r/2018/08/01/02bd502e-6910-416e-9422-ab17d03e33fb/thumbnail/1280x720/3d204e46b25a30d1298d795660e084bd/cbsn-h-blue.jpg',
-    website: 'cbs.com',
+    website: 'cbsnews.com',
   ),
   ChannelModel(
     id: 3,
@@ -47,7 +47,7 @@ List<ChannelModel> channelList = [
     logo: 'assets/images/engadget.jpg',
     bannerImage:
         'https://i.pinimg.com/originals/28/15/8b/28158bd45a07019da19334715d41dd01.jpg',
-    website: 'ngadget.com',
+    website: 'engadget.com',
   ),
   ChannelModel(
     id: 6,

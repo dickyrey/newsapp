@@ -87,37 +87,27 @@ class TopNewsListWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Container(
-                child: Row(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    CircleAvatar(
-                      radius: 17.0,
-                      backgroundColor: Colors.black12,
-                      backgroundImage: AssetImage('assets/images/bbc_news.jpg'),
+                    SizedBox(
+                      width: 100.0,
+                      child: Text(
+                        news.author,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: subtitle2.copyWith(
+                          color: kBlueDeepColor,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
-                    SizedBox(width: 8.0),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        SizedBox(
-                          width: 100.0,
-                          child: Text(
-                            news.author,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: subtitle2.copyWith(
-                              color: kBlueDeepColor,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          timeago.format(news.publishedAt),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: subtitle3,
-                        ),
-                      ],
-                    )
+                    Text(
+                      timeago.format(news.publishedAt),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: subtitle3,
+                    ),
                   ],
                 ),
               ),
