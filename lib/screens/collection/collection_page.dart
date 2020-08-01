@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newsapp/screens/collection/search_news_page.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/category_model.dart';
@@ -7,9 +8,15 @@ import '../../utils/constants.dart';
 import 'widgets/category_card.dart';
 import 'widgets/tab_collection_widget.dart';
 
-class CollectionPage extends StatelessWidget {
+class CollectionPage extends StatefulWidget {
+  @override
+  _CollectionPageState createState() => _CollectionPageState();
+}
+
+class _CollectionPageState extends State<CollectionPage> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final newsProv = Provider.of<NewsProvider>(context);
     return DefaultTabController(
       length: 7,
@@ -20,7 +27,9 @@ class CollectionPage extends StatelessWidget {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.search),
-              onPressed: () {},
+              onPressed: () {
+                showSearch(context: context, delegate: SearchNewsPage());
+          },
               color: Colors.black,
             ),
           ],
@@ -98,4 +107,7 @@ class CollectionPage extends StatelessWidget {
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

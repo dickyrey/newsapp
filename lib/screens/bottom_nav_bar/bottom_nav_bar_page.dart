@@ -23,7 +23,6 @@ class _BottomNavBarPageState extends State<BottomNavBarPage>
     HomePage(),
     CollectionPage(),
     NewsByCountryPage(),
-    HomePage(),
   ];
 
   @override
@@ -89,10 +88,10 @@ class _BottomNavBarPageState extends State<BottomNavBarPage>
               icon: Icon(FlutterIcons.note_oct),
               title: Text(''),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(FlutterIcons.user_fea),
-              title: Text(''),
-            ),
+//            BottomNavigationBarItem(
+//              icon: Icon(FlutterIcons.user_fea),
+//              title: Text(''),
+//            ),
           ],
         ),
       ),

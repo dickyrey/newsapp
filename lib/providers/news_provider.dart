@@ -54,4 +54,8 @@ class NewsProvider with ChangeNotifier {
         "&language=en&apiKey=" +
         _apiKey);
   }
+
+  Future<List<NewsModel>> fetchNewsbyQuery({@required String query}) async {
+    return fetchNews(_urlTopHeadline + 'q=' + query + '&apiKey=' + _apiKey);
+  }
 }

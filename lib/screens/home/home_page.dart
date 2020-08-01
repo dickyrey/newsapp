@@ -3,6 +3,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:newsapp/models/channel_model.dart';
 import 'package:newsapp/screens/channel/browse_channel_page.dart';
 import 'package:newsapp/screens/channel/channel_page.dart';
+import 'package:newsapp/screens/collection/search_news_page.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/news_provider.dart';
@@ -12,10 +13,16 @@ import 'widgets/custom_carousel_widget.dart';
 import 'widgets/program_list_widget.dart';
 import 'widgets/top_news_list_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     final newsProv = Provider.of<NewsProvider>(context);
+    super.build(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -24,7 +31,9 @@ class HomePage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {},
+            onPressed: () {
+              showSearch(context: context, delegate: SearchNewsPage());
+            },
             color: Colors.black,
           ),
         ],
@@ -63,24 +72,6 @@ class HomePage extends StatelessWidget {
                 },
               ),
               ProgramListWidget(),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Card(
-                    child: IconButton(
-                      icon: Icon(FlutterIcons.list_ent),
-                      onPressed: () {},
-                    ),
-                  ),
-                  Card(
-                    child: IconButton(
-                      icon: Icon(FlutterIcons.grid_ent),
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
-              ),
               BrowseNewsInHome(newsProv: newsProv),
             ],
           ),
@@ -104,4 +95,7 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

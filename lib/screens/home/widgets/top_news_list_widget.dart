@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newsapp/screens/core/news_webview_page.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import '../../../models/news_model.dart';
@@ -48,7 +49,16 @@ class TopNewsListWidget extends StatelessWidget {
             physics: BouncingScrollPhysics(),
             itemBuilder: (context, index) {
               var news = snapshot.data[index];
-              return newsCard(news);
+              return GestureDetector(onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NewsWebViewPage(
+                      url: news.url,
+                    ),
+                  ),
+                );
+              },child: newsCard(news));
             },
           );
         },
@@ -93,7 +103,7 @@ class TopNewsListWidget extends StatelessWidget {
                     SizedBox(
                       width: 100.0,
                       child: Text(
-                        news.author,
+                        news.author??'',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: subtitle2.copyWith(

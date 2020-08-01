@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newsapp/screens/core/news_webview_page.dart';
 import '../../../models/news_model.dart';
 import '../../../providers/news_provider.dart';
 import '../../../utils/constants.dart';
@@ -45,54 +46,65 @@ class BrowseNewsInHome extends StatelessWidget {
             physics: ScrollPhysics(),
             itemBuilder: (context, index) {
               var news = snapshot.data[index];
-              return Card(
-                margin: EdgeInsets.symmetric(
-                  horizontal: 18.0,
-                  vertical: 8.0,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                elevation: 8.0,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(12.0),
-                        child: Image.network(
-                          news.urlToImage ??
-                              'https://bitsofco.de/content/images/2018/12/broken-1.png',
-                          fit: BoxFit.cover,
-                          width: 120.0,
-                          height: 100.0,
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NewsWebViewPage(
+                          url: news.url,
                         ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                news.title,
-                                style: headline3,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              SizedBox(height: 12.0),
-                              Text(
-                                timeago.format(news.publishedAt),
-                                style: subtitle2,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ],
+                      ));
+                },
+                child: Card(
+                  margin: EdgeInsets.symmetric(
+                    horizontal: 18.0,
+                    vertical: 8.0,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  elevation: 8.0,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: <Widget>[
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(12.0),
+                          child: Image.network(
+                            news.urlToImage ??
+                                'https://bitsofco.de/content/images/2018/12/broken-1.png',
+                            fit: BoxFit.cover,
+                            width: 120.0,
+                            height: 100.0,
                           ),
                         ),
-                      )
-                    ],
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  news.title,
+                                  style: headline3,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                SizedBox(height: 12.0),
+                                Text(
+                                  timeago.format(news.publishedAt),
+                                  style: subtitle2,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               );

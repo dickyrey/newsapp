@@ -26,7 +26,7 @@ class BrowseChannelPage extends StatelessWidget {
                     elevation: 0.0,
                     stretch: true,
                     title: Text(
-                      programModel.name,
+                      programModel.name ?? '',
                       style: headline2.copyWith(color: Colors.white),
                     ),
                     expandedHeight: 180.0,

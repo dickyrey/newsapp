@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:newsapp/screens/core/news_webview_page.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import '../../../models/news_model.dart';
@@ -7,6 +8,7 @@ import '../../../utils/constants.dart';
 
 class CustomCarouselWidget extends StatelessWidget {
   final Future<List<NewsModel>> future;
+
   const CustomCarouselWidget({
     Key key,
     @required this.future,
@@ -55,14 +57,14 @@ class CustomCarouselWidget extends StatelessWidget {
               ),
               itemBuilder: (context, index) {
                 final news = snapshot.data[index];
-                return _image_carousel(news);
+                return _image_carousel(news, context);
               },
             ),
           );
         });
   }
 
-  Stack _image_carousel(NewsModel news) {
+  Stack _image_carousel(NewsModel news, BuildContext context) {
     return Stack(
       children: <Widget>[
         Positioned(
@@ -70,49 +72,61 @@ class CustomCarouselWidget extends StatelessWidget {
           left: 0.0,
           right: 0.0,
           bottom: 25.0,
-          child: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(
-                  news.urlToImage ??
-                      'https://bitsofco.de/content/images/2018/12/broken-1.png',
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NewsWebViewPage(
+                    url: news.url,
+                  ),
                 ),
-                fit: BoxFit.cover,
-              ),
-            ),
+              );
+            },
             child: Container(
-              alignment: Alignment.bottomLeft,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.transparent,
-                    Colors.black26,
-                    Colors.black54,
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
+                image: DecorationImage(
+                  image: NetworkImage(
+                    news.urlToImage ??
+                        'https://bitsofco.de/content/images/2018/12/broken-1.png',
+                  ),
+                  fit: BoxFit.cover,
                 ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Spacer(),
-                    Text(
-                      news.title,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: headline2.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+              child: Container(
+                alignment: Alignment.bottomLeft,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.transparent,
+                      Colors.black26,
+                      Colors.black54,
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Spacer(),
+                      Text(
+                        news.title,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: headline2.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    Text(
-                      timeago.format(news.publishedAt),
-                      style: subtitle2.copyWith(color: Colors.white),
-                    ),
-                  ],
+                      Text(
+                        timeago.format(news.publishedAt),
+                        style: subtitle2.copyWith(color: Colors.white),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
