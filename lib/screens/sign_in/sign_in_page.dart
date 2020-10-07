@@ -14,7 +14,6 @@ class SignInPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Form(
             key: signInProv.formKey,
-            autovalidate: signInProv.autoValidation,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[

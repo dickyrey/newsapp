@@ -78,19 +78,19 @@ class _BottomNavBarPageState extends State<BottomNavBarPage>
           items: [
             BottomNavigationBarItem(
               icon: Icon(FlutterIcons.home_fea),
-              title: Text(''),
+              label: '',
             ),
             BottomNavigationBarItem(
               icon: Icon(FlutterIcons.grid_fea),
-              title: Text(''),
+              label: '',
             ),
             BottomNavigationBarItem(
               icon: Icon(FlutterIcons.note_oct),
-              title: Text(''),
+              label: '',
             ),
 //            BottomNavigationBarItem(
 //              icon: Icon(FlutterIcons.user_fea),
-//              title: Text(''),
+//              label: Text(''),
 //            ),
           ],
         ),

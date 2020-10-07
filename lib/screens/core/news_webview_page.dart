@@ -11,7 +11,7 @@ class NewsWebViewPage extends StatefulWidget {
 
 class _NewsWebViewPageState extends State<NewsWebViewPage> {
   bool showLoading = false;
-  WebViewController _webViewController;
+//  WebViewController _webViewController;
 
   @override
   void initState() {
@@ -55,7 +55,6 @@ class _NewsWebViewPageState extends State<NewsWebViewPage> {
 
                       javascriptMode: JavascriptMode.unrestricted,
                       onWebViewCreated: (webViewController){
-                        _webViewController = webViewController;
                       },
                     ),
                     (showLoading)?Center(child: CircularProgressIndicator(),):Center()

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp/providers/news_provider.dart';
 import 'package:newsapp/screens/channel/channel_news_list_page.dart';
-import 'package:newsapp/screens/collection/widgets/tab_collection_widget.dart';
-import 'package:provider/provider.dart';
 
 import '../../../models/channel_model.dart';
 import '../../../utils/constants.dart';
@@ -14,7 +11,6 @@ class ProgramListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final newsProv = Provider.of<NewsProvider>(context);
     return Container(
       width: double.infinity,
       height: 150.0,

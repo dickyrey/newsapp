@@ -24,7 +24,6 @@ class SignUpPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Form(
             key: signUpProv.formKey,
-            autovalidate: signUpProv.autoValidation,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newsapp/screens/collection/search_news_page.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/country_model.dart';
@@ -32,7 +33,9 @@ class BrowseNewsByCountryPage extends StatelessWidget {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.search),
-              onPressed: () {},
+              onPressed: () {
+                showSearch(context: context, delegate: SearchNewsPage());
+              },
               color: Colors.black,
             ),
           ],
