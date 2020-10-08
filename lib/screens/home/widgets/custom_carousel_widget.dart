@@ -86,8 +86,9 @@ class CustomCarouselWidget extends StatelessWidget {
             },
             child: Stack(
               children: <Widget>[
-                CachedNetworkImage(imageUrl: news.urlToImage ?? 'https://bitsofco.de/content/images/2018/12/broken-1.png'),
-                // TODO: ADD ALL NETWORK IMAGE CACHED PACKAGE
+                CachedNetworkImage(
+                    imageUrl: news.urlToImage ??
+                        'https://bitsofco.de/content/images/2018/12/broken-1.png'),
                 Container(
                   alignment: Alignment.bottomLeft,
                   decoration: BoxDecoration(

@@ -17,9 +17,6 @@ class NewsByCountryPage extends StatelessWidget {
             icon: Icon(Icons.search),
             onPressed: () {
               showSearch(context: context, delegate: SearchNewsPage());
-
-
-              // TODO: Search delegate Page
             },
             color: Colors.black,
           ),

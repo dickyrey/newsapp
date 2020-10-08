@@ -139,9 +139,7 @@ class SignUpPage extends StatelessWidget {
                 ),
                 SizedBox(height: 5.0),
                 GestureDetector(
-                  onTap: () {
-                    // TODO: Navigate term and conditions page
-                  },
+                  onTap: () {},
                   child: Text(
                     'Term and Conditions',
                     style: subtitle2.copyWith(
